@@ -41,26 +41,37 @@ function onGetLocs() {
 
 function renderLocsTable(locs) {
   // ADD: loader
-  // ADD: update time presentation
-  const elLocsTable = document.querySelector(".location-table")
-  elLocsTable.classList.remove(".hidden")
+  const obj = {
+    name: "ho",
+    age: 12,
+  }
+  const { name, age } = obj
+  const arr = [1, 2]
+  const [a, b] = arr
+  console.log(name)
+  console.log(a, b)
+  const elLocsTable = document.querySelector(".locs")
   const strHTML = locs.map(
     ({ id, name, lat, lng, weather, updatedAt, createdAt }) => `
-      <tbody>
-        <td>#${id}</td>
-        <td>${name}</td>
-        <td>${lat}</td>
-        <td>${lng}</td>
-        <td>${weather}</td>
-        <td>${new Date(createdAt)}</td>
-        <td>${updatedAt}</td>
-        <td>
-          <button onclick="onGoToLoc(${lat}, ${lng})">Go</button>
-        </td>
-        <td>
-          <button onclick="onDeleteLoc(${id})">Delete</button>
-        </td>
-        </tbody>
+        <table>
+            <tbody>
+                <td>#${id}</td>
+                <td>${name}</td>
+                <td>${lat}</td>
+                <td>${lng}</td>
+                <td>${weather}</td>
+                <td>${createdAt}</td>
+                <td>${updatedAt}</td>
+                <td>
+                    <button onclick="onGoToLoc(${lat}, ${lng})">Go
+                    </button>
+                </td>
+                <td>
+                    <button onclick="onDeleteLoc(${id})">Delete
+                    </button>
+                </td>
+            </tbody>
+          </table>  
     `
   )
   elLocsTable.innerHTML = strHTML.join("")
@@ -68,16 +79,12 @@ function renderLocsTable(locs) {
 
 function onGoToLoc(lat, lng) {
   console.log("go to...", lat, lng)
-  mapService.panTo(lat, lng)
-  mapService.addMarker({ lat: lat, lng: lng })
-  onGetLocs()
   return lat, lng
 }
 
 function onDeleteLoc(id) {
   console.log("delete...", id)
   locService.deleteLoc(id)
-  onGetLocs()
   return id
 }
 
@@ -85,11 +92,6 @@ function onGetUserPos() {
   getPosition()
     .then((pos) => {
       console.log("User position is:", pos.coords)
-      onGoToLoc(pos.coords.latitude, pos.coords.longitude)
-      mapService.addMarker({
-        lat: pos.coords.latitude,
-        lng: pos.coords.longitude,
-      })
       document.querySelector(
         ".user-pos"
       ).innerText = `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
