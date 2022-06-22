@@ -69,12 +69,15 @@ function renderLocsTable(locs) {
 function onGoToLoc(lat, lng) {
   console.log("go to...", lat, lng)
   mapService.panTo(lat, lng)
+  mapService.addMarker({ lat: lat, lng: lng })
+  onGetLocs()
   return lat, lng
 }
 
 function onDeleteLoc(id) {
   console.log("delete...", id)
   locService.deleteLoc(id)
+  onGetLocs()
   return id
 }
 
@@ -82,6 +85,11 @@ function onGetUserPos() {
   getPosition()
     .then((pos) => {
       console.log("User position is:", pos.coords)
+      onGoToLoc(pos.coords.latitude, pos.coords.longitude)
+      mapService.addMarker({
+        lat: pos.coords.latitude,
+        lng: pos.coords.longitude,
+      })
       document.querySelector(
         ".user-pos"
       ).innerText = `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
