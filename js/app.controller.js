@@ -40,6 +40,7 @@ function onGetLocs() {
 }
 
 function renderLocsTable(locs) {
+<<<<<<< HEAD
   // ADD: loader
   const obj = {
     name: "ho",
@@ -72,9 +73,36 @@ function renderLocsTable(locs) {
                 </td>
             </tbody>
           </table>  
+=======
+  const elLocsTable = document.querySelector(".location-table")
+  elLocsTable.classList.remove(".hidden")
+  const strHTML = locs.map(
+    ({ id, name, lat, lng, weather, updatedAt, createdAt }) => `
+      <tbody>
+        <td>#${id}</td>
+        <td>${name}</td>
+        <td>${lat}</td>
+        <td>${lng}</td>
+        <td>${weather}</td>
+        <td>${presentDateTime(createdAt)}</td>
+        <td>${updatedAt}</td>
+        <td>
+          <button onclick="onGoToLoc(${lat}, ${lng})">Go</button>
+        </td>
+        <td>
+          <button onclick="onDeleteLoc(${id})">Delete</button>
+        </td>
+        </tbody>
+>>>>>>> 880765a604d1ad63890b71139270d767f590fd49
     `
   )
   elLocsTable.innerHTML = strHTML.join("")
+}
+
+function presentDateTime(date) {
+  console.log(date)
+  let time = new Date(parseInt(date))
+  return time.toLocaleString()
 }
 
 function onGoToLoc(lat, lng) {
