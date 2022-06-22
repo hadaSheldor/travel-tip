@@ -1,9 +1,41 @@
-.boards-container {
-    display: flex;
+.screens-container {
     flex-direction: row;
+    margin: auto;
+    justify-content: center;
+    width: 85%;
+    gap: 2px;
+    
 }
 
-/* #map {
+#map {
+    width: 60%;
+    border: 1px solid black;
+    border-radius: 10px;
+    
+}
 
-    max-width: 40%;
-} */
+
+.info-pads {
+    /* margin: auto; */
+    flex-direction: column;
+    width: 60%;
+    
+
+}
+.weather-table{
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgba(233, 230, 227, 0.873);
+    height: 50%;
+    
+
+   
+}
+.location-table{
+    background-color: rgba(33, 96, 152, 0.889);
+    border: 1px solid black;
+    border-radius: 10px;
+    
+
+}
+
