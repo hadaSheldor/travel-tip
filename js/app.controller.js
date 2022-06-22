@@ -45,44 +45,24 @@ function renderLocsTable(locs) {
     name: "ho",
     age: 12,
   }
-  const { name, age } = obj
-  const arr = [1, 2]
-  const [a, b] = arr
-  console.log(name)
-  console.log(a, b)
-  const elLocsTable = document.querySelector(".locs")
+  const elLocsTable = document.querySelector(".location-table")
   const strHTML = locs.map(
     ({ id, name, lat, lng, weather, updatedAt, createdAt }) => `
-        <table>
-            <thead>
-                <th>id:</th>
-                <th>Name:</th>
-                <th>Pos.lat:</th>
-                <th>Pos.lng:</th>
-                <th>Weather:</th>
-                <th>Created:</th>
-                <th>Updated:</th>
-                <th>Go</th>
-                <th>Delete</th>
-            </thead>
-            <tbody>
-                <td>#${id}</td>
-                <td>${name}</td>
-                <td>${lat}</td>
-                <td>${lng}</td>
-                <td>${weather}</td>
-                <td>${createdAt}</td>
-                <td>${updatedAt}</td>
-                <td>
-                    <button onclick="onGoToLoc(${lat}, ${lng})">Go
-                    </button>
-                </td>
-                <td>
-                    <button onclick="onDeleteLoc(${id})">Delete
-                    </button>
-                </td>
-            </tbody>
-          </table>  
+      <tbody>
+        <td>#${id}</td>
+        <td>${name}</td>
+        <td>${lat}</td>
+        <td>${lng}</td>
+        <td>${weather}</td>
+        <td>${createdAt}</td>
+        <td>${updatedAt}</td>
+        <td>
+          <button onclick="onGoToLoc(${lat}, ${lng})">Go</button>
+        </td>
+        <td>
+          <button onclick="onDeleteLoc(${id})">Delete</button>
+        </td>
+        </tbody>
     `
   )
   elLocsTable.innerHTML = strHTML.join("")
