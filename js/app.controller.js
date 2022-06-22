@@ -40,8 +40,6 @@ function onGetLocs() {
 }
 
 function renderLocsTable(locs) {
-  // ADD: loader
-  // ADD: update time presentation
   const elLocsTable = document.querySelector(".location-table")
   elLocsTable.classList.remove(".hidden")
   const strHTML = locs.map(
