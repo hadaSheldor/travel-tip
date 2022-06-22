@@ -12,8 +12,10 @@
     min-width: fit-content;
     color: aliceblue;
     background-color: transparent;
+    background: linear-gradient(162deg, rgb(26, 34, 36) 13%, rgba(96, 201, 239, 0.754) 76%, rgba(203, 212, 213, 0.708) 88%);
+    box-shadow: 1px 0px 4px 1px rgba(251, 250, 250, 0.94);
+    border-radius: 5px;
 }
-
 /* .btn-arrow {
     position: relative;
     transition: padding .4s;
