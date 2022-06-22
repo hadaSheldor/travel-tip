@@ -41,11 +41,9 @@ function onGetLocs() {
 
 function renderLocsTable(locs) {
   // ADD: loader
-  const obj = {
-    name: "ho",
-    age: 12,
-  }
+  // ADD: update time presentation
   const elLocsTable = document.querySelector(".location-table")
+  elLocsTable.classList.remove(".hidden")
   const strHTML = locs.map(
     ({ id, name, lat, lng, weather, updatedAt, createdAt }) => `
       <tbody>
@@ -54,7 +52,7 @@ function renderLocsTable(locs) {
         <td>${lat}</td>
         <td>${lng}</td>
         <td>${weather}</td>
-        <td>${createdAt}</td>
+        <td>${new Date(createdAt)}</td>
         <td>${updatedAt}</td>
         <td>
           <button onclick="onGoToLoc(${lat}, ${lng})">Go</button>
@@ -70,6 +68,7 @@ function renderLocsTable(locs) {
 
 function onGoToLoc(lat, lng) {
   console.log("go to...", lat, lng)
+  mapService.panTo(lat, lng)
   return lat, lng
 }
 
