@@ -52,7 +52,7 @@ function renderLocsTable(locs) {
         <td>${lat}</td>
         <td>${lng}</td>
         <td>${weather}</td>
-        <td>${new Date(createdAt)}</td>
+        <td>${presentDateTime(createdAt)}</td>
         <td>${updatedAt}</td>
         <td>
           <button onclick="onGoToLoc(${lat}, ${lng})">Go</button>
@@ -64,6 +64,12 @@ function renderLocsTable(locs) {
     `
   )
   elLocsTable.innerHTML = strHTML.join("")
+}
+
+function presentDateTime(date) {
+  console.log(date)
+  let time = new Date(parseInt(date))
+  return time.toLocaleString()
 }
 
 function onGoToLoc(lat, lng) {

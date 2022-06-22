@@ -17,16 +17,7 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
       center: { lat, lng },
       zoom: 15,
     })
-    // let infoContent = addInfoWindow(lat, lng)
-    // const infowindow = new google.maps.InfoWindow({
-    //   content: infoContent,
-    // })
     gMap.addListener("click", (mapsMouseEvent) => {
-      // console.log(userPosition)
-      // infowindow.open({
-      //   map: gMap,
-      //   shouldFocus: false,
-      // })
       const userPosition = mapsMouseEvent.latLng.toJSON()
       const newLocName = prompt(`Please enter location's name...`)
       const newLoc = {
@@ -46,13 +37,6 @@ function addMarker(loc) {
     map: gMap,
     title: "Hello World!",
   })
-  // marker.addListener("click", () => {
-  //   infowindow.open({
-  //     anchor: marker,
-  //     map: gMap,
-  //     shouldFocus: false,
-  //   })
-  // })
   return marker
 }
 
