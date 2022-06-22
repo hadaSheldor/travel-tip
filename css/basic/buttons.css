@@ -1,0 +1,30 @@
+
+.btn-container {
+  margin: auto;
+  justify-content: center;  
+  gap: 10px;
+  margin-top: 2em;
+  margin-bottom: 2em;
+
+}
+.btn-container button{
+    min-height: 5vh;
+    min-width: fit-content;
+    color: aliceblue;
+    background-color: transparent;
+}
+
+/* .btn-arrow {
+    position: relative;
+    transition: padding .4s;
+}
+
+.btn-arrow:hover {
+    padding-inline-end: 2.6em;
+}
+
+.btn-arrow:hover::after {
+    content: "→";
+    position: absolute;
+    right: 0.875em;
+} */

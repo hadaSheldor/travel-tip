@@ -1,0 +1,17 @@
+.main-layout {
+    /* box-sizing: content-box; */
+    padding-inline-start: 1.6rem;
+    padding-inline-end: 1.6rem;
+}
+
+/* .btn-layout {
+    
+  
+
+} */
+
+.card-layout>*:not(:last-child) {
+    margin-bottom: 5rem;
+}
+
+

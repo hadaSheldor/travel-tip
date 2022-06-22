@@ -1,0 +1,9 @@
+.boards-container {
+    display: flex;
+    flex-direction: row;
+}
+
+/* #map {
+
+    max-width: 40%;
+} */
