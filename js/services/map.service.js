@@ -4,9 +4,11 @@ export const mapService = {
   initMap,
   addMarker,
   panTo,
+  // addInfoWindow,
 }
 
 var gMap
+
 function initMap(lat = 32.0749831, lng = 34.9120554) {
   console.log("InitMap")
   return _connectGoogleApi().then(() => {
@@ -15,9 +17,16 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
       center: { lat, lng },
       zoom: 15,
     })
-
+    // let infoContent = addInfoWindow(lat, lng)
+    // const infowindow = new google.maps.InfoWindow({
+    //   content: infoContent,
+    // })
     gMap.addListener("click", (mapsMouseEvent) => {
       // console.log(userPosition)
+      // infowindow.open({
+      //   map: gMap,
+      //   shouldFocus: false,
+      // })
       const userPosition = mapsMouseEvent.latLng.toJSON()
       const newLocName = prompt(`Please enter location's name...`)
       const newLoc = {
@@ -32,13 +41,32 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
 }
 
 function addMarker(loc) {
-  var marker = new google.maps.Marker({
+  let marker = new google.maps.Marker({
     position: loc,
     map: gMap,
     title: "Hello World!",
   })
+  // marker.addListener("click", () => {
+  //   infowindow.open({
+  //     anchor: marker,
+  //     map: gMap,
+  //     shouldFocus: false,
+  //   })
+  // })
   return marker
 }
+
+// function addInfoWindow(lat, lng) {
+//   const contentString = `
+//     <h5>Lat: ${lat}</h5>
+//     <h5>Lng: ${lng}</h5>
+//     <input type="text" placeholder="Location name..."/>
+//   `
+//   // const infowindow = new google.maps.InfoWindow({
+//   //   content: contentString,
+//   // })
+//   return infowindow
+// }
 
 function panTo(lat, lng) {
   var laLatLng = new google.maps.LatLng(lat, lng)
